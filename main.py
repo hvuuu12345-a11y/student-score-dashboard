@@ -70,7 +70,7 @@ def dashboard(
         all_data["class_name"].unique().tolist()
     )
 
-return templates.TemplateResponse(
+    return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
         context={
