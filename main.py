@@ -70,4 +70,16 @@ def dashboard(
         all_data["class_name"].unique().tolist()
     )
 
-    return ("Hello World")
+return templates.TemplateResponse(
+        request=request,
+        name="dashboard.html",
+        context={
+            "summary": summarize(data),
+            "students": data.to_dict(
+                orient="records"
+            ),
+            "classes": classes,
+            "selected_class": class_name or "",
+            "plotly_chart": classification_chart_html(data),
+        },
+    )
